@@ -1,4 +1,5 @@
 import numpy as np
+from typing import Tuple
 
 
 class DataSplitter:
@@ -14,12 +15,17 @@ class DataSplitter:
         test_size: float = 0.3,
         val_size: float = 0.0,
         random_seed: int = 42,
-    ):
+    ) -> Tuple[
+        Tuple[np.ndarray, np.ndarray],
+        Tuple[np.ndarray, np.ndarray],
+        Tuple[np.ndarray, np.ndarray],
+    ]:
         """
         Splits the dataset into training, validation, and test sets.
         Args:
-            X (np.ndarray): Feature matrix.
-            y (np.ndarray): Target vector.
+            X (np.ndarray): Feature matrix (input features).
+            y (np.ndarray): Target vector (labels or desired outputs).
+
             train_size (float): Proportion of the dataset to include in the training set.
             val_size (float): Proportion of the dataset to include in the validation set.
             test_size (float): Proportion of the dataset to include in the test set.
