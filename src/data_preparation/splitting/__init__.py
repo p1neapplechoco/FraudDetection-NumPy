@@ -1,1 +1,1 @@
-from data_splitter import DataSplitter
+from data_preparation.splitting.data_splitter import DataSplitter

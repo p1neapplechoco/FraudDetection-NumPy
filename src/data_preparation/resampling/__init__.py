@@ -1,1 +1,1 @@
-from resampler import Resampler
+from data_preparation.resampling.resampler import Resampler

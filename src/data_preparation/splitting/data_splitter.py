@@ -1,5 +1,6 @@
 import numpy as np
 from typing import Tuple
+from pathlib import Path
 
 
 class DataSplitter:
@@ -111,3 +112,35 @@ class DataSplitter:
         X_test, y_test = X[test_indices], y[test_indices]
 
         return (X_train, y_train), (X_test, y_test), (X_val, y_val)
+
+    @staticmethod
+    def save_split_data(
+        X: np.ndarray,
+        y: np.ndarray,
+        train_size: float,
+        test_size: float,
+        output_dir: Path,
+        random_seed: int = 42,
+    ) -> None:
+        """
+        Splits the dataset and saves the training and test sets to disk.
+        Args:
+            X (np.ndarray): Feature matrix.
+            y (np.ndarray): Target vector.
+            train_size (float): Proportion of the dataset to include in the training set.
+            test_size (float): Proportion of the dataset to include in the test set.
+            output_dir (Path): Directory to save the split datasets.
+            random_seed (int): Random seed for reproducibility.
+        """
+        (X_train, y_train), (X_test, y_test) = DataSplitter.train_test_split(
+            X, y, train_size, test_size, random_seed
+        )
+
+        output_dir.mkdir(parents=True, exist_ok=True)
+
+        np.save(output_dir / "X_train.npy", X_train)
+        np.save(output_dir / "y_train.npy", y_train)
+        np.save(output_dir / "X_test.npy", X_test)
+        np.save(output_dir / "y_test.npy", y_test)
+
+        print(f"Data saved to {output_dir}")

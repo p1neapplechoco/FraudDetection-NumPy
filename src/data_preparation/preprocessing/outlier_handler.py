@@ -32,7 +32,7 @@ class OutlierHandler:
 
         for key in cols.keys():
             col = cols[key]
-            lower_bound, upper_bound = Preprocessor.iqr_based_outlier_bounds(col)
+            lower_bound, upper_bound = OutlierHandler.iqr_based_outlier_bounds(col)
             outliers = col[(col < lower_bound) | (col > upper_bound)]
 
             if len(outliers) / len(col) * 100 > threshold_percentage:
@@ -68,7 +68,7 @@ class OutlierHandler:
         Returns:
             np.ndarray: A numpy array with outliers clipped.
         """
-        lower_bound, upper_bound = Preprocessor.iqr_based_outlier_bounds(col)
+        lower_bound, upper_bound = OutlierHandler.iqr_based_outlier_bounds(col)
         clipped_col = np.clip(col, lower_bound, upper_bound)
         return clipped_col
 
@@ -81,6 +81,6 @@ class OutlierHandler:
         Returns:
             int: The number of outliers in the column.
         """
-        lower_bound, upper_bound = Preprocessor.iqr_based_outlier_bounds(col)
+        lower_bound, upper_bound = OutlierHandler.iqr_based_outlier_bounds(col)
         outliers = col[(col < lower_bound) | (col > upper_bound)]
         return len(outliers)
