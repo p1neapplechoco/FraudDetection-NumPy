@@ -1,3 +1,7 @@
 import data_preparation.preprocessing
 import data_preparation.resampling
 import data_preparation.splitting
+
+import models.logistic_regression
+
+import evaluator.evaluator
