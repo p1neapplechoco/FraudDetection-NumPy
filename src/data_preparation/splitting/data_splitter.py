@@ -8,6 +8,62 @@ class DataSplitter:
     """
 
     @staticmethod
+    def shuffle_data(
+        X: np.ndarray, y: np.ndarray, random_seed: int = 42
+    ) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Shuffles the dataset.
+        Args:
+            X (np.ndarray): Feature matrix.
+            y (np.ndarray): Target vector.
+            random_seed (int): Random seed for reproducibility.
+        Returns:
+            np.ndarray: Shuffled feature matrix.
+            np.ndarray: Shuffled target vector.
+        """
+        np.random.seed(random_seed)
+        num_samples = X.shape[0]
+        indices = np.random.permutation(num_samples)
+        return X[indices], y[indices]
+
+    @staticmethod
+    def train_test_split(
+        X: np.ndarray,
+        y: np.ndarray,
+        train_size: float = 0.7,
+        test_size: float = 0.3,
+        random_seed: int = 42,
+    ) -> Tuple[Tuple[np.ndarray, np.ndarray], Tuple[np.ndarray, np.ndarray]]:
+        """
+        Splits the dataset into training and test sets.
+        Args:
+            X (np.ndarray): Feature matrix (input features).
+            y (np.ndarray): Target vector (labels or desired outputs).
+            train_size (float): Proportion of the dataset to include in the training set.
+            test_size (float): Proportion of the dataset to include in the test set.
+            random_seed (int): Random seed for reproducibility.
+        Returns:
+            tuple: Tuples of (X_train, y_train) and (X_test, y_test).
+        """
+
+        assert train_size + test_size == 1.0, "Train and test sizes must sum to 1."
+
+        np.random.seed(random_seed)
+
+        num_samples = X.shape[0]
+        indices = np.random.permutation(num_samples)
+
+        train_end = int(train_size * num_samples)
+
+        train_indices = indices[:train_end]
+        test_indices = indices[train_end:]
+
+        X_train, y_train = X[train_indices], y[train_indices]
+        X_test, y_test = X[test_indices], y[test_indices]
+
+        return (X_train, y_train), (X_test, y_test)
+
+    @staticmethod
     def train_test_val_split(
         X: np.ndarray,
         y: np.ndarray,
@@ -31,7 +87,7 @@ class DataSplitter:
             test_size (float): Proportion of the dataset to include in the test set.
             random_seed (int): Random seed for reproducibility.
         Returns:
-            tuple: Tuples of (X_train, y_train), (X_val, y_val), (X_test, y_test).
+            tuple: Tuples of (X_train, y_train), (X_test, y_test), (X_val, y_val).
         """
 
         assert (
@@ -54,4 +110,4 @@ class DataSplitter:
         X_val, y_val = X[val_indices], y[val_indices]
         X_test, y_test = X[test_indices], y[test_indices]
 
-        return (X_train, y_train), (X_val, y_val), (X_test, y_test)
+        return (X_train, y_train), (X_test, y_test), (X_val, y_val)
