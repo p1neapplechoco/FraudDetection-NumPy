@@ -84,3 +84,10 @@ class Evaluator:
         if (precision + recall) == 0:
             return 0.0
         return 2 * (precision * recall) / (precision + recall)
+
+    @staticmethod
+    def pr_auc(y_true, y_pred):
+        from sklearn.metrics import precision_recall_curve, auc
+
+        precision, recall, _ = precision_recall_curve(y_true, y_pred)
+        return auc(recall, precision)
