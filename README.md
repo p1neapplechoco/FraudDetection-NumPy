@@ -17,7 +17,6 @@ Dự án mô hình học máy để phát hiện giao dịch gian lận trong th
 - [Hướng Phát Triển](#hướng-phát-triển)
 - [Contributors](#contributors)
 - [License](#license)
-- [Liên Hệ](#liên-hệ)
 
 ---
 
@@ -87,7 +86,7 @@ Dataset gồm **31 features**:
 - Dữ liệu đầy đủ
 - V1-V28 đã được chuẩn hóa
 
---
+---
 
 ## Research Questions & Insights
 
