@@ -170,7 +170,7 @@ Raw Data > Handle Outliers > Feature Scaling > Train/Test Split
 
 3. **Chia tập dữ liệu**
    - Stratified split để giữ tỷ lệ class
-   - Ratio: 80% training / 20% testing
+   - Ratio: 70% training / 30% testing
 
 #### 1.2 Handling Imbalanced Data
 
