@@ -15,7 +15,7 @@ Dự án mô hình học máy để phát hiện giao dịch gian lận trong th
 - [Cấu Trúc Dự Án](#cấu-trúc-dự-án)
 - [Thách Thức & Giải Pháp](#thách-thức--giải-pháp)
 - [Hướng Phát Triển](#hướng-phát-triển)
-- [Đóng Góp](#đóng-góp)
+- [Contributors](#contributors)
 - [License](#license)
 - [Liên Hệ](#liên-hệ)
 
@@ -427,27 +427,6 @@ jupyter-notebook notebooks/03_handling_imbalance.ipynb
 ```bash
 jupyter-notebook notebooks/04_modeling.ipynb
 ```
-
-### Sử Dụng Custom Modules
-
-```python
-# Import các modules đã implement
-from data_preparation.preprocessing import Cleaner, OutlierHandler, Scaler
-from data_preparation.splitting import DataSplitter
-from data_preparation.resampling import Resampler
-from models import LogisticRegression, RandomForest
-from evaluator import Evaluator
-
-# Example: Train model
-model = LogisticRegression(learning_rate=0.01, n_iterations=1000)
-model.fit(X_train, y_train)
-predictions = model.predict(X_test)
-
-# Example: Evaluate
-evaluator = Evaluator(metrics=['accuracy', 'precision', 'recall', 'f1_score', 'pr_auc'])
-results = evaluator.evaluate(y_true=y_test, y_pred=predictions, visualize=True)
-```
-
 ---
 
 ## Kết Quả
@@ -458,31 +437,31 @@ results = evaluator.evaluate(y_true=y_test, y_pred=predictions, visualize=True)
 
 | Metric | Under-sampled Test | Original Imbalanced Test |
 |--------|-------------------|--------------------------|
-| Accuracy | 0.9234 | 0.9541 |
-| Precision | 0.0847 | 0.0541 |
-| Recall | 0.8986 | 0.9167 |
-| F1-Score | 0.1549 | 0.1025 |
-| PR-AUC | 0.4523 | 0.5132 |
+| Accuracy | 0.9392 | 0.9481 |
+| Precision | 0.9724 | 0.0326 |
+| Recall | 0.9097 | 0.9430 |
+| F1-Score | 0.9400 | 0.0630 |
+| PR-AUC | 0.9647 | 0.4879 |
 
 #### Random Forest - Baseline (n_trees=10)
 
 | Metric | Under-sampled Test | Original Imbalanced Test |
 |--------|-------------------|--------------------------|
-| Accuracy | 0.9421 | 0.9682 |
-| Precision | 0.1234 | 0.0823 |
-| Recall | 0.8456 | 0.8756 |
-| F1-Score | 0.2156 | 0.1509 |
-| PR-AUC | 0.5234 | 0.5987 |
+| Accuracy | 0.9392 | 0.9622 |
+| Precision | 0.9724 | 0.0445 |
+| Recall | 0.9097 | 0.9494 |
+| F1-Score | 0.9400 | 0.0849 |
+| PR-AUC | 0.9647 | 0.4970 |
 
 #### Random Forest - Optimized (n_trees=50, max_depth=15)
 
 | Metric | Original Imbalanced Test |
 |--------|--------------------------|
-| Accuracy | **0.9723** |
-| Precision | **0.0956** |
-| Recall | **0.9012** |
-| F1-Score | **0.1732** |
-| PR-AUC | **0.6234** |
+| Accuracy | **0.9802** |
+| Precision | **0.0823** |
+| Recall | **0.9557** |
+| F1-Score | **0.1516** |
+| PR-AUC | **0.5191** |
 
 ### Phân Tích & Nhận Xét
 
@@ -693,18 +672,15 @@ P4DS-LAB02/
 3. **Tối ưu các tham số**
     - [ ] Grid Search
     - [ ] Random Search
-    - [ ] Bayesian Optimization (basic version)
+    - [ ] Tối ưu Bayesian
 
 4. **Feature Engineering**
-    - [ ] Time-based features (hour, day, month)
-    - [ ] Amount bucketing
-    - [ ] Interaction features
-    - [ ] Statistical features (rolling mean, std)
+    - [ ] Thời gian (hour, day, month)
+    - [ ] Đặc trưng thống kê (rolling mean, std)
 
 5. **Mô hình học sâu**
-    - [ ] Simple Neural Network (2-3 layers)
-    - [ ] Backpropagation implementation
-    - [ ] Activation functions (ReLU, tanh)
+    - [ ] Mạng Neuron đơn giản
+    - [ ] Hàm kích hoạt (ReLU, tanh)
 
 ---
 
@@ -722,7 +698,7 @@ P4DS-LAB02/
 - **GitHub**: [@p1neapplechoco](https://github.com/p1neapplechoco)
 - **Email**: ngthienaans@gmail.com
 
-**Project Link**: [https://github.com/p1neapplechoco/P4DS-LAB02](https://github.com/p1neapplechoco/P4DS-LAB02)
+**Project Link**: [https://github.com/p1neapplechoco/FraudDetection-NumPy/](https://github.com/p1neapplechoco/FraudDetection-NumPy/)
 
 ---
 
@@ -733,7 +709,7 @@ P4DS-LAB02/
 ```
 MIT License
 
-Copyright (c) 2025 Thien An Nguyen
+Copyright (c) 2025 Nguyen Thien An
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
