@@ -87,7 +87,20 @@ class Evaluator:
 
     @staticmethod
     def pr_auc(y_true, y_pred):
-        from sklearn.metrics import precision_recall_curve, auc
+        y_scores = y_pred.astype(float)
 
-        precision, recall, _ = precision_recall_curve(y_true, y_pred)
-        return auc(recall, precision)
+        # Sort by predicted scores in descending order
+        sorted_idx = np.argsort(-y_scores)
+        y_sorted = y_true[sorted_idx]
+
+        tp_cumsum = np.cumsum(y_sorted)
+        fp_cumsum = np.cumsum(1 - y_sorted)
+
+        precisions = tp_cumsum / (tp_cumsum + fp_cumsum)
+        recalls = tp_cumsum / np.sum(y_true)
+
+        precisions = np.concatenate([[1.0], precisions])
+        recalls = np.concatenate([[0.0], recalls])
+
+        auc = np.sum((recalls[1:] - recalls[:-1]) * precisions[1:])
+        return auc
