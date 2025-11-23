@@ -686,14 +686,14 @@ P4DS-LAB02/
 
 ## Contributors
 
-## Thông Tin Tác Giả
+### Thông Tin Tác Giả
 
 - **Tên**: Nguyễn Thiên Ấn 
 - **Trường**: Trường Đại học Khoa học Tự nhiên (HCMUS - VNUHCM)
 - **Lớp**: CSC17104 - P4DS
 ---
 
-## Liên Hệ
+### Liên Hệ
 
 - **GitHub**: [@p1neapplechoco](https://github.com/p1neapplechoco)
 - **Email**: ngthienaans@gmail.com
